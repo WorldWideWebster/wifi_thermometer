@@ -1,3 +1,49 @@
+/*
+ * File: wifi.c
+ *
+ * Description:
+ * This file implements the Wifi API for the ESP8266 microcontroller. It includes
+ * the necessary code for initializing and managing a WiFi station interface.
+ * The implementation utilizes FreeRTOS for task management and event handling.
+ *
+ * Key functionalities include:
+ * 1. Initialization and configuration of the WiFi station mode.
+ * 2. Event handling for WiFi and IP events to manage WiFi connections.
+ * 3. Automatic reconnection logic with a configurable maximum number of retries.
+ * 4. Logging of WiFi events for diagnostic and monitoring purposes.
+ *
+ * External Dependencies:
+ * - FreeRTOS: For task scheduling and event group handling.
+ * - ESP-IDF Libraries: For ESP8266 WiFi and system functionalities.
+ * - lwIP: Lightweight IP stack for network communication.
+ * - User-defined "secrets.h" for WiFi credentials.
+ *
+ * Note: This code assumes that the ESP-IDF environment is properly set up and
+ *       that the necessary components are included in the project configuration.
+ *
+ * Author: Sean Webster
+ * Created on: January 2024
+ *
+ * Copyright (c) 2024 Sean Webster
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 #include <string.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"

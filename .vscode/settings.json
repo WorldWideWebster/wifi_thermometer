@@ -2,5 +2,6 @@
   "files.associations": {
     "esp_wifi.h": "c",
     "secrets.h": "c"
-  }
+  },
+  "idf.adapterTargetName": "esp8266"
 }
